@@ -11,6 +11,9 @@ TagManager:
   - Increase
   - Decrease
   - Coin
+  - FxTemporaire
+  - Bomb
+  - Vehicle
   layers:
   - Default
   - TransparentFX

@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour
+[CreateAssetMenu(menuName = "Player Info")]
+[System.Serializable]
+public class PlayerInfo : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int coins;
+    public List<Vehicle> listVehicles;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[System.Serializable]
+public class Vehicle
+{
+    public int id;
+    public int price;
+    public bool owned;
+    public bool used;
 }

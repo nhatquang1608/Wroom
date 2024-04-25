@@ -9,15 +9,12 @@ public class Box : MonoBehaviour
 {
     public bool isTouched;
     [SerializeField] private Vector3 initPosition;
-    [SerializeField] private Vector3 endPoint = new Vector3(0, 0, 270);
     [SerializeField] private GameObject particle;
-    [SerializeField] private GameManager gameManager;
     private Tween moveTween;
 
     private void Start() 
     {
         initPosition = transform.position;
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Animate();
     }
 
@@ -33,16 +30,16 @@ public class Box : MonoBehaviour
 
     public async void Touched()
     {
-        KillAnimation();
         await TouchedAnimation();
     }
 
     private async UniTask TouchedAnimation()
     {
+        KillAnimation();
         GameObject effect = Instantiate(particle, initPosition, Quaternion.identity);
         transform.position = initPosition;
-        transform.DORotate(endPoint, 1f);
-        transform.DOScale(0, 1);
+        transform.DORotate(new Vector3(0f, 0f, 180f), 1f);
+        transform.DOScale(0f, 1f);
 
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
